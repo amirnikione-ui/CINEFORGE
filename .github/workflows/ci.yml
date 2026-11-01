@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  engine-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install FFmpeg + fonts
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg fonts-dejavu-core
+      - name: Install engine
+        run: |
+          if [ -f packages/video-engine/pyproject.toml ]; then pip install -e ./packages/video-engine; fi
+          pip install pytest pillow
+      - name: Run tests (whatever exists yet)
+        run: bash scripts/run_tests.sh
+
+  # Enabled when FORGE lands backend/ (CF-010) and VEGA lands apps/web (CF-016):
+  # backend-tests:  pytest backend/tests -q   (needs `pip install -r backend/requirements.txt`)
+  # web-build:      cd apps/web && npm ci && npm run build
+
+  compose-config:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker compose config -q
+
+  secret-guard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: No PAT-looking strings in tree
+        run: |
+          ! rg -n "gh[pousr]_[A-Za-z0-9]{20,}" --glob '!.git' .

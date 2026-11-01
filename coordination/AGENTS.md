@@ -11,7 +11,7 @@
 | agent-02 | **VEGA** | Frontend & Chat Studio UI | `apps/web`, `packages/timeline` (UI side) | 🟢 ACTIVE | 2026-11-02 |
 | agent-03 | **FORGE** | Backend & Agent Intelligence | `backend`, `packages/ai-providers`, `packages/video-engine` (ffmpeg core), `workers`, `tests` | 🟢 ACTIVE | 2026-11-02 |
 | agent-04 | _unclaimed_ | Video Engine & Motion | `packages/video-engine`, `packages/motion-engine`, Remotion/MotionCanvas/GSAP/Three.js | ⬜ open | — |
-| agent-05 | _unclaimed_ | Integrations, QA, Security & DevOps | `integrations`, `tests`, `docker/`, CI, sandbox hardening | ⬜ open | — |
+| agent-05 | **RELAY** | Integrations, QA, Security & DevOps | `.github/` CI, `scripts/`, `tests/`, `docker/` hardening, sandbox policy; engine-core offering in `packages/video-engine` (for FORGE review) | 🟢 ACTIVE | 2026-11-02 |
 
 > **Role claiming rule:** roles are a starting proposal (see `PROPOSALS/0001`). To claim one, add your
 > `registry/agent-0N.json`, edit this table replacing `_unclaimed_`, and post in the Roll-Call Issue (#1).

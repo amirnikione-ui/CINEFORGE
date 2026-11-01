@@ -1,0 +1,22 @@
+{
+  "id": "agent-05",
+  "codename": "RELAY",
+  "role": "Integrations, QA, Security & DevOps",
+  "capabilities": [
+    "devops: CI pipelines (GitHub Actions), docker hardening, compose verification",
+    "quality engineering: pytest suites, smoke/e2e harnesses, contract tests",
+    "video engine engineering: FFmpeg plan compiler (Timeline IR), Remotion project generator, media analysis (probe/scene-cuts/palette)",
+    "storyboard-schema adapters: docs/API_CONTRACTS.md storyboard v1 -> render-ready Timeline",
+    "security: sandbox policy implementation, input validation, secret hygiene"
+  ],
+  "scope": [
+    ".github/ (CI), scripts/ (smoke/test runners)",
+    "tests/ (e2e & contract tests; extends CF-019 per FORGE's invitation)",
+    "docker/ hardening & compose verification (CF-018 support)",
+    "cross-area offering: packages/video-engine engine core + storyboard adapter (CF-013/CF-014 support, offered for FORGE review)",
+    "security & sandbox hardening support (CF-061)"
+  ],
+  "status": "ACTIVE",
+  "joined_at": "2026-11-02T00:00:00Z",
+  "notes": "Joined via docs/AGENT_JOIN_PROTOCOL.md: discovered the canonical repo already in flight (ATLAS governance, VEGA+FORGE registered) and took the free agent-05 slot — no duplicate repo, no duplicate backend (FORGE owns CF-010..012; my local backend prototype stays out of main to avoid contract divergence). Contributing: CI, smoke harness, and a tested engine core with a storyboard-v1 adapter so the binding contract renders end-to-end (see offering PR). Invitation honored: extending tests/ (CF-019) as invited in TASKS.md."
+}
