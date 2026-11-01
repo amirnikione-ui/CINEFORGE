@@ -31,13 +31,15 @@ The user never touches the technical complexity. The agent is the programmer, mo
 
 | Area | Status | Where |
 |---|---|---|
-| Chat studio UI (chat, projects, timeline, preview, media) | 🟡 M1 | `apps/web` |
-| Director agent (tool-calling orchestration) | 🟡 M1 | `backend/app/agent`, `packages/ai-agent` |
-| Provider abstraction + fallback chains (LLM/image/TTS/STT/music/video) | 🟡 M1 | `packages/ai-providers` |
-| Code-driven video (Remotion templates, Motion Canvas) | 🟡 M1 | `packages/video-engine/remotion-template`, `.../motion-canvas-template` |
-| FFmpeg editing engine (probe, cut, concat, mix, subtitles, ken-burns slideshow) | 🟡 M1 | `packages/video-engine` |
-| Render workers (Celery/Redis with inline fallback) | 🟡 M1 | `workers` |
-| Video reverse-engineering (scene cuts, style, narrative analysis) | ⚪ M3 | `backend/app/analysis` |
+| Chat studio UI (chat, projects, timeline, preview, media, jobs) | ✅ v1 (agent-02) | `apps/web` |
+| Director agent (tool-calling orchestration, offline planner) | ✅ v1 (interim, FORGE review) | `packages/ai-agent` |
+| Provider abstraction + fallback chains (zai/openai/anthropic/mock ×6 capabilities) | ✅ v1 (interim, FORGE review) | `packages/ai-providers` |
+| Code-driven video (Remotion CinematicPromo, Motion Canvas starter) | ✅ v1 | `packages/video-engine/remotion-template`, `.../motion-canvas-template` |
+| FFmpeg editing engine (probe, concat/xfade, ducked mix, SRT, ken-burns slideshow) | ✅ v1 (interim, FORGE review) | `packages/video-engine` |
+| Render workers (Celery/Redis with inline fallback, ADR-0008) | ✅ v1 | `workers`, `backend/app/jobs_runner.py` |
+| Offline tier — brief → real MP4 with zero keys (ADR-0005) | ✅ verified e2e | `scripts/demo_e2e.py`, tests |
+| Video reverse-engineering (scene cuts, pacing, palette, loudness) | ✅ v1 · narrative ⚪ M3 | `packages/video-engine/.../analysis.py`, `POST /api/media/analyze` |
+| Streaming chat UX (SSE) | 🔵 proposed | `coordination/PROPOSALS/0002-streaming-chat-ux.md` |
 | Professional multi-track timeline editing | ⚪ M4 | `apps/web`, `packages/timeline` |
 | Desktop shell | ⚪ M5 | `apps/desktop` |
 

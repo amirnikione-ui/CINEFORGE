@@ -54,3 +54,9 @@ Thumbs.db
 *.log
 tmp/
 .cache/
+
+# cineforge runtime
+storage/
+*.db
+*.db-wal
+*.db-shm

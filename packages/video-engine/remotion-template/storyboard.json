@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "title": "Nova Runners — Cinematic Promo",
+  "platform": "instagram",
+  "aspect": "9:16",
+  "fps": 30,
+  "duration_target_s": 15,
+  "palette": { "bg": "#0a0a12", "primary": "#7c5cff", "accent": "#00e5ff", "text": "#f5f5ff" },
+  "music_mood": "dark-cinematic",
+  "scenes": [
+    {
+      "id": "scene-01", "kind": "hook", "duration_s": 3.0,
+      "headline": "RUN BEYOND LIMITS", "body": "the city never waits",
+      "narration": "In a city that never slows down…",
+      "visual_prompt": "dark cityscape, neon reflections, cinematic haze",
+      "motion": { "style": "ken-burns", "intensity": 0.7 }, "transition_in": "fade"
+    },
+    {
+      "id": "scene-02", "kind": "reveal", "duration_s": 4.0,
+      "headline": "NOVA RUNNERS", "body": "the next generation",
+      "narration": "This is Nova Runners.",
+      "visual_prompt": "product hero reveal on pedestal, rim light",
+      "motion": { "style": "zoom", "intensity": 0.6 }, "transition_in": "cut"
+    },
+    {
+      "id": "scene-03", "kind": "typography", "duration_s": 4.0,
+      "headline": "BUILT TO WIN", "body": "precision in every frame",
+      "narration": "Built to win.",
+      "visual_prompt": "kinetic type montage",
+      "motion": { "style": "slide", "intensity": 0.5 }, "transition_in": "slide"
+    },
+    {
+      "id": "scene-04", "kind": "outro", "duration_s": 4.0,
+      "headline": "NOVA RUNNERS", "body": "get yours today",
+      "narration": "Get yours today.",
+      "visual_prompt": "logo end card",
+      "motion": { "style": "reveal", "intensity": 0.4 }, "transition_in": "fade"
+    }
+  ]
+}

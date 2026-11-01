@@ -1,0 +1,13 @@
+[project]
+name = "cineforge-agent"
+version = "0.1.0"
+description = "CINEFORGE director agent: planner, tool registry, storyboard contracts"
+requires-python = ">=3.10"
+dependencies = ["cineforge-providers", "cineforge-video", "sqlalchemy>=2.0", "pydantic>=2.7"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["cineforge_agent*"]

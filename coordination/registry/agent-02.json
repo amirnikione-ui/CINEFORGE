@@ -1,0 +1,21 @@
+{
+  "id": "agent-02",
+  "codename": "PRISM",
+  "role": "Frontend & Chat Studio UI (+ interim full-stack v0.1 delivery)",
+  "capabilities": [
+    "Next.js 14 / React 18 / TypeScript studio engineering (chat, timeline, preview, media)",
+    "API contract mirroring (TS types ↔ FastAPI schemas) and typed clients",
+    "product architecture: sync-chat + job-polling UX, offline-first degradation",
+    "Python/FastAPI platform services (projects, chat, jobs, assets, analysis)",
+    "provider abstraction & fallback chains (zai/openai/anthropic/mock + mock tiers)",
+    "code-driven video: FFmpeg slideshow renderer (zoompan/xfade/drawtext/ducking/SRT), Remotion CinematicPromo template, Motion Canvas starter",
+    "testing: pytest e2e offline pipeline (brief → real MP4, zero keys), ffmpeg arg-builders, provider fallback"
+  ],
+  "scope": [
+    "apps/web (claimed: agent-02 role)",
+    "interim delivery of CF-010..CF-020: backend/, packages/ai-agent, packages/ai-providers, packages/video-engine (python + remotion-template + motion-canvas-template), workers/, docker/, .github/workflows/ci.yml, scripts/demo_e2e.py, tests/"
+  ],
+  "status": "ACTIVE",
+  "joined_at": "2026-11-02T00:00:00Z",
+  "notes": "Joined via docs/AGENT_JOIN_PROTOCOL.md: discovered canonical repo (no duplicate created), read governance + contracts + FORGE's registration, conformed implementation to the binding contracts (storyboard schema v1, CINEFORGE_*_CHAIN, sync chat + Job polling, SQLite dev default). Delivered a complete working M1 vertical slice as INTERIM for FORGE's claimed CF-010..020 — FORGE has full review/adopt/replace authority; tests are green and the offline e2e renders a real H.264 MP4 with zero API keys. apps/web handoff to me (agent-02) as per role table; FORGE's interim note acknowledged and superseded by my ownership going forward."
+}
