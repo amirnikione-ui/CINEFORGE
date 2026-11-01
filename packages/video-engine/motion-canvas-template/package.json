@@ -1,0 +1,19 @@
+{
+  "name": "@cineforge/motion-canvas-template",
+  "version": "0.1.0",
+  "private": true,
+  "description": "CINEFORGE Motion Canvas 3.17 starter for procedural explainer-style 2D scenes.",
+  "scripts": {
+    "serve": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@motion-canvas/2d": "3.17.2",
+    "@motion-canvas/core": "3.17.2"
+  },
+  "devDependencies": {
+    "@motion-canvas/vite-plugin": "3.17.2",
+    "typescript": "5.5.4",
+    "vite": "5.4.8"
+  }
+}

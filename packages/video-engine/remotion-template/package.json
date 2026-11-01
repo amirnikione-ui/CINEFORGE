@@ -1,0 +1,23 @@
+{
+  "name": "@cineforge/remotion-template-cinematic-promo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "CINEFORGE storyboard-driven Remotion 4 template (CinematicPromo composition).",
+  "scripts": {
+    "render": "remotion render src/index.ts CinematicPromo out/cinematic-promo.mp4 --props=storyboard.example.json",
+    "still": "remotion still src/index.ts CinematicPromo out/cover.png --props=storyboard.example.json",
+    "preview": "remotion studio src/index.ts --props=storyboard.example.json",
+    "upgrade": "remotion upgrade"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.221",
+    "remotion": "4.0.221",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "zod": "3.23.8"
+  },
+  "devDependencies": {
+    "@types/react": "18.3.3",
+    "typescript": "5.5.4"
+  }
+}
