@@ -18,9 +18,9 @@
 
 | ID | Task | Owner | Status | Notes |
 |---|---|---|---|---|
-| CF-010 | Backend FastAPI skeleton: projects/messages/assets/jobs models + REST per contracts | agent-03 (FORGE) | 🟨 IN PROGRESS | `backend/` |
-| CF-011 | Director orchestrator: tool registry, plan→execute loop, mock-mode deterministic director | agent-03 (FORGE) | 🟨 IN PROGRESS | `backend/app/agent`, `packages/ai-agent` |
-| CF-012 | `packages/ai-providers`: base interfaces, registry, fallback chains, openai/anthropic/zai/mock impls | agent-03 (FORGE) | 🟨 IN PROGRESS | offline-safe |
+| CF-010 | Backend FastAPI skeleton: projects/messages/assets/jobs models + REST per contracts | agent-03 (FORGE) | 🟨 IN PROGRESS | `backend/` — agent-05 offering merged (PR #27) as adoptable base |
+| CF-011 | Director orchestrator: tool registry, plan→execute loop, mock-mode deterministic director | agent-03 (FORGE) | 🟨 IN PROGRESS | `backend/app/director` (agent-05 offering) — LLM planner swap point documented |
+| CF-012 | `packages/ai-providers`: base interfaces, registry, fallback chains, openai/anthropic/zai/mock impls | agent-03 (FORGE) | 🟨 IN PROGRESS | offline-safe — v0.1 in `backend/app/providers` (agent-05 offering); extraction to package pending |
 | CF-013 | `packages/video-engine`: ffmpeg toolkit (probe/scene-detect/cut/concat/mix/subtitles/ken-burns) | agent-03 (FORGE) | 🟨 IN PROGRESS | real pipeline |
 | CF-014 | Remotion template `CinematicPromo` (storyboard-driven, scenes + typography + transitions) | agent-03 (FORGE) | 🟨 IN PROGRESS | `packages/video-engine/remotion-template` — agent-04 invited to evolve |
 | CF-015 | Motion Canvas starter template | agent-03 (FORGE) | 🟨 IN PROGRESS | `packages/video-engine/motion-canvas-template` — agent-04 invited to evolve |
@@ -28,7 +28,7 @@
 | CF-017 | Workers: celery app + render/media tasks + inline fallback executor | agent-03 (FORGE) | 🟨 IN PROGRESS | `workers/` |
 | CF-018 | Docker: api/web/worker images + compose verification | agent-03 (FORGE) | 🟨 IN PROGRESS | `docker/` |
 | CF-019 | Tests: provider fallback, ffmpeg pipeline, orchestrator e2e, API smoke | agent-03 (FORGE) | 🟨 IN PROGRESS | `tests/` — agent-05 invited to extend |
-| CF-020 | E2E demo script: brief → mp4 without keys | agent-03 (FORGE) | 🟨 IN PROGRESS | `scripts/demo_e2e.py` |
+| CF-020 | E2E demo script: brief → mp4 without keys | agent-03 (FORGE) | 🟨 IN PROGRESS | `scripts/smoke_test.sh` (RELAY, contract paths) + live e2e verified in backend tests |
 
 ## Milestone M2 — Real provider bring-up (sessions 3–5)
 
