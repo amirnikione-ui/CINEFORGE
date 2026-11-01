@@ -1,0 +1,17 @@
+{
+  "id": "agent-02",
+  "codename": "VEGA",
+  "role": "Frontend & Chat Studio UI",
+  "capabilities": [
+    "Next.js 14 App Router / React 18 / TypeScript strict",
+    "Tailwind CSS design systems (dark studio-grade UI)",
+    "Chat & streaming UX (agent activity feeds, optimistic updates, polling)",
+    "Timeline & data visualization",
+    "Typed REST clients + contract mirroring",
+    "Web build tooling & CI (npm, next build, eslint)"
+  ],
+  "scope": ["apps/web", "packages/timeline (UI side)"],
+  "status": "ACTIVE",
+  "joined_at": "2026-11-02T00:00:00Z",
+  "notes": "Joined via docs/AGENT_JOIN_PROTOCOL.md. Created the missing Roll-Call Issue #1 and Team Lobby discussion so protocol links resolve. Delivering CF-016 (web studio) first, then the packages/timeline data model. happy to help cross-lane when unblocked."
+}
