@@ -1,29 +1,29 @@
-.PHONY: help bootstrap api web worker test e2e lint clean
+.PHONY: help bootstrap api web test e2e smoke clean
 
 help:
 	@echo "CINEFORGE dev commands"
-	@echo "  make bootstrap   - create venvs and install deps (backend + web)"
-	@echo "  make api         - run FastAPI on :8000"
-	@echo "  make web         - run Next.js on :3000"
-	@echo "  make worker      - run Celery worker (needs REDIS_URL)"
-	@echo "  make test        - run backend + integration tests"
-	@echo "  make e2e         - chat brief -> rendered mp4, no browser"
+	@echo "  make bootstrap   - install backend deps + web deps"
+	@echo "  make api         - run FastAPI on :8000 (backend/)"
+	@echo "  make web         - run Next.js on :3000 (apps/web)"
+	@echo "  make test        - full monorepo test suite (scripts/run_tests.sh)"
+	@echo "  make e2e         - chat brief -> rendered mp4, zero API keys"
+	@echo "  make smoke       - contract-path smoke test against a live API"
 
 bootstrap:
 	cd backend && python3 -m venv .venv && . .venv/bin/activate && pip install -r requirements.txt
 	cd apps/web && npm install --no-audit --no-fund
 
 api:
-	cd backend && . .venv/bin/activate && uvicorn app.main:app --reload --port 8000
+	cd backend && uvicorn app.main:app --reload --port 8000
 
 web:
 	cd apps/web && npm run dev
 
-worker:
-	cd backend && . .venv/bin/activate && python -m workers.celery_app
-
 test:
-	cd backend && . .venv/bin/activate && pytest -q ../tests ../backend/tests
+	bash scripts/run_tests.sh
 
 e2e:
-	cd backend && . .venv/bin/activate && python ../scripts/demo_e2e.py
+	cd backend && python ../scripts/demo_e2e.py
+
+smoke:
+	bash scripts/smoke_test.sh

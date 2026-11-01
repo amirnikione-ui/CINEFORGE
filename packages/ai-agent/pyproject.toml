@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cineforge-ai-agent"
+version = "0.1.0"
+description = "CINEFORGE director-agent contracts: tool schemas, prompts, plan/execute interface"
+requires-python = ">=3.10"
+dependencies = []
+
+[tool.setuptools]
+packages = ["ai_agent"]
