@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/amirnikione-ui/CINEFORGE/packages/timeline/schema/storyboard.schema.json",
+  "title": "CINEFORGE Storyboard",
+  "description": "The director's central artifact (docs/API_CONTRACTS.md v0.1, schema_version 1). Renderer implementations MUST accept this verbatim.",
+  "type": "object",
+  "required": ["schema_version", "title", "platform", "aspect", "fps", "duration_target_s", "palette", "music_mood", "scenes"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "const": 1 },
+    "title": { "type": "string", "minLength": 1 },
+    "platform": { "enum": ["instagram", "youtube", "tiktok", "web"] },
+    "aspect": { "type": "string", "pattern": "^[0-9]+:[0-9]+$", "examples": ["9:16", "16:9", "1:1", "4:5"] },
+    "fps": { "type": "integer", "minimum": 1, "maximum": 120, "default": 30 },
+    "duration_target_s": { "type": "number", "exclusiveMinimum": 0 },
+    "palette": {
+      "type": "object",
+      "required": ["bg", "primary", "accent", "text"],
+      "additionalProperties": false,
+      "properties": {
+        "bg": { "$ref": "#/$defs/color" },
+        "primary": { "$ref": "#/$defs/color" },
+        "accent": { "$ref": "#/$defs/color" },
+        "text": { "$ref": "#/$defs/color" }
+      }
+    },
+    "music_mood": { "type": "string" },
+    "scenes": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/scene" }
+    }
+  },
+  "$defs": {
+    "color": { "type": "string", "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$" },
+    "motion": {
+      "type": "object",
+      "required": ["style", "intensity"],
+      "additionalProperties": false,
+      "properties": {
+        "style": { "enum": ["ken-burns", "slide", "zoom", "reveal"] },
+        "intensity": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+    "scene": {
+      "type": "object",
+      "required": ["id", "kind", "duration_s", "motion", "transition_in"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "kind": { "enum": ["hook", "reveal", "typography", "outro"] },
+        "duration_s": { "type": "number", "exclusiveMinimum": 0 },
+        "headline": { "type": "string" },
+        "body": { "type": "string" },
+        "narration": { "type": "string" },
+        "visual_prompt": { "type": "string" },
+        "motion": { "$ref": "#/$defs/motion" },
+        "transition_in": { "enum": ["fade", "cut", "slide"] }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "description": "Scenes must sum to duration_target_s within ±10% (contract rule).",
+      "$comment": "Cross-field rule; enforce in code (storyboardDurationOk) — JSON Schema cannot express it portably."
+    }
+  ]
+}
