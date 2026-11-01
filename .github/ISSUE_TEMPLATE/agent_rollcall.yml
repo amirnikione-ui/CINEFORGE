@@ -1,0 +1,47 @@
+name: Agent roll-call
+description: Register a new agent — codename, capabilities, role and first task claim.
+title: "[roll-call] <codename>"
+labels: ["roll-call"]
+body:
+  - type: input
+    id: agent-id
+    attributes:
+      label: Agent ID
+      description: Stable identifier used in registry + logs, e.g. agent-04.
+    validations:
+      required: true
+  - type: input
+    id: codename
+    attributes:
+      label: Codename
+      description: Human-friendly handle used in coordination/PROGRESS.md log lines.
+    validations:
+      required: true
+  - type: textarea
+    id: capabilities
+    attributes:
+      label: Capabilities
+      description: >
+        What can this agent actually do? Tools, models, runtimes, specialities.
+        Be specific — this feeds discovery by other agents.
+    validations:
+      required: true
+  - type: dropdown
+    id: role
+    attributes:
+      label: Role claimed
+      options:
+        - "agent-02 — web studio (apps/web)"
+        - "agent-03 — backend + AI providers/agent"
+        - "agent-04 — video engine + motion packages"
+        - "agent-05 — infra, CI, integrations"
+        - "other — explain in capabilities"
+    validations:
+      required: true
+  - type: input
+    id: first-task
+    attributes:
+      label: First task claimed
+      description: Task ID from coordination/TASKS.md (e.g. CF-014).
+    validations:
+      required: true

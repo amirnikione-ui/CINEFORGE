@@ -1,0 +1,21 @@
+{
+  "name": "@cineforge/remotion-template",
+  "version": "0.1.0",
+  "private": true,
+  "description": "CINEFORGE storyboard-driven Remotion composition (CinematicPromo) — Storyboard JSON schema v1 in, cinematic promo out.",
+  "scripts": {
+    "dev": "remotion studio",
+    "render": "remotion render CinematicPromo out/video.mp4",
+    "upgrade": "remotion upgrade"
+  },
+  "dependencies": {
+    "@remotion/cli": "^4.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remotion": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "typescript": "^5.5.0"
+  }
+}

@@ -18,17 +18,17 @@
 
 | ID | Task | Owner | Status | Notes |
 |---|---|---|---|---|
-| CF-010 | Backend FastAPI skeleton: projects/messages/assets/jobs models + REST per contracts | agent-01 → claimable | 🟨 IN PROGRESS | `backend/` |
-| CF-011 | Director orchestrator: tool registry, plan→execute loop, mock-mode deterministic director | agent-01 → claimable | 🟨 IN PROGRESS | `backend/app/agent`, `packages/ai-agent` |
-| CF-012 | `packages/ai-providers`: base interfaces, registry, fallback chains, openai/anthropic/zai/mock impls | agent-01 → claimable | 🟨 IN PROGRESS | offline-safe |
-| CF-013 | `packages/video-engine`: ffmpeg toolkit (probe/scene-detect/cut/concat/mix/subtitles/ken-burns) | agent-01 → claimable | 🟨 IN PROGRESS | real pipeline |
-| CF-014 | Remotion template `CinematicPromo` (storyboard-driven, scenes + typography + transitions) | agent-01 → claimable | 🟨 IN PROGRESS | `packages/video-engine/remotion-template` |
-| CF-015 | Motion Canvas starter template | ⬜ open | ⬜ OPEN | `packages/video-engine/motion-canvas-template` |
-| CF-016 | Web studio: chat UI, projects dashboard, preview pane, timeline v1, media panel | ⬜ CLAIM ME (agent-02?) | 🟨 IN PROGRESS | `apps/web` |
-| CF-017 | Workers: celery app + render/media tasks + inline fallback executor | agent-01 → claimable | 🟨 IN PROGRESS | `workers/` |
-| CF-018 | Docker: api/web/worker images + compose verification | agent-01 → claimable | 🟨 IN PROGRESS | `docker/` |
-| CF-019 | Tests: provider fallback, ffmpeg pipeline, orchestrator e2e, API smoke | ⬜ CLAIM ME (agent-05?) | 🟨 IN PROGRESS | `tests/` |
-| CF-020 | E2E demo script: brief → mp4 without keys | agent-01 | 🟨 IN PROGRESS | `scripts/demo_e2e.py` |
+| CF-010 | Backend FastAPI skeleton: projects/messages/assets/jobs models + REST per contracts | agent-01 | ✅ DONE | routers+models+schemas, smoke-tested |
+| CF-011 | Director orchestrator: tool registry, plan→execute loop, mock-mode deterministic director | agent-01 | ✅ DONE | LLM tool-loop + offline director, e2e verified |
+| CF-012 | `packages/ai-providers`: base interfaces, registry, fallback chains, openai/anthropic/zai/mock impls | agent-01 | ✅ DONE | fallback unit-tested |
+| CF-013 | `packages/video-engine`: ffmpeg toolkit (probe/scene-detect/cut/concat/mix/subtitles/ken-burns) | agent-01 | ✅ DONE | rendered 30s 1080×1920 mp4 live |
+| CF-014 | Remotion template `CinematicPromo` (storyboard-driven, scenes + typography + transitions) | agent-01 | ✅ DONE | scaffold contract verified in e2e |
+| CF-015 | Motion Canvas starter template | agent-01 | ✅ DONE | bar-chart explainer scene |
+| CF-016 | Web studio: chat UI, projects dashboard, preview pane, timeline v1, media panel | agent-01 (CLAIMABLE by agent-02) | ✅ DONE | next build green; owner: agent-02 from M2 |
+| CF-017 | Workers: celery app + render/media tasks + inline fallback executor | agent-01 | ✅ DONE | inline mode verified; celery needs Redis |
+| CF-018 | Docker: api/web/worker images + compose verification | agent-01 | 🟨 IN PROGRESS | images written; runtime verification needs a docker host (none in sandbox) — CLAIM ME |
+| CF-019 | Tests: provider fallback, ffmpeg pipeline, orchestrator e2e, API smoke | agent-01 (CLAIMABLE by agent-05) | ✅ DONE | 16/16 pytest green |
+| CF-020 | E2E demo script: brief → mp4 without keys | agent-01 | ✅ DONE | verified live: 30s 1080×1920 mp4, 3.6 MB |
 
 ## Milestone M2 — Real provider bring-up (sessions 3–5)
 

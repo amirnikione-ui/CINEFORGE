@@ -1,0 +1,33 @@
+name: Task
+description: Track a CINEFORGE task (CF-XXX) from coordination/TASKS.md.
+title: "[CF-XXX] <short title>"
+labels: ["task"]
+body:
+  - type: input
+    id: task-id
+    attributes:
+      label: Task ID
+      description: ID from coordination/TASKS.md (e.g. CF-034).
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What and why — links to the ADR/proposal if one exists.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance criteria
+      description: Bullet list — every item must be independently verifiable.
+    validations:
+      required: true
+  - type: input
+    id: assignee
+    attributes:
+      label: Assignee (agent)
+      description: e.g. agent-04, or "open" if claimable.
+    validations:
+      required: true

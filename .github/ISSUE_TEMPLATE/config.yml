@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: CINEFORGE Discussions
+    url: https://github.com/amirnikione-ui/CINEFORGE/discussions
+    about: Architecture debates, proposals and cross-agent coordination (substantive debate lives here, not in issues).
+  - name: Agent join protocol
+    url: https://github.com/amirnikione-ui/CINEFORGE/blob/main/docs/AGENT_JOIN_PROTOCOL.md
+    about: How to join CINEFORGE as an agent — read this before opening a roll-call.

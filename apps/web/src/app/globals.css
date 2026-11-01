@@ -1,0 +1,154 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base ─────────────────────────────────────────────────────────────────── */
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  @apply bg-ink font-sans text-zinc-200 antialiased;
+}
+
+::selection {
+  background: rgba(124, 92, 255, 0.35);
+  color: #ffffff;
+}
+
+/* Thin, dark scrollbars everywhere */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #26263c transparent;
+}
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e1e30;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2c2c48;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* ── Components ───────────────────────────────────────────────────────────── */
+
+@layer components {
+  .gradient-text {
+    @apply bg-gradient-to-r from-accent-violet to-accent-cyan bg-clip-text text-transparent;
+  }
+
+  .panel {
+    @apply rounded-xl border border-ink-line bg-ink-panel shadow-panel;
+  }
+
+  .input {
+    @apply w-full rounded-lg border border-ink-line bg-ink-raised px-3 py-2 text-sm text-zinc-100 placeholder-zinc-600 outline-none transition focus:border-accent-violet/60 focus:ring-1 focus:ring-accent-violet/30 disabled:opacity-50;
+  }
+
+  .btn-accent {
+    @apply inline-flex items-center justify-center gap-1.5 rounded-lg bg-gradient-to-r from-accent-violet to-accent-cyan px-4 py-2 text-sm font-semibold text-[#08080f] shadow-glow transition duration-150 hover:brightness-110 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50 disabled:active:scale-100;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] font-medium leading-4;
+  }
+}
+
+/* ── Film grain — pure CSS, no images ─────────────────────────────────────── */
+
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.35;
+  mix-blend-mode: overlay;
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0.05) 0.5px, transparent 0.5px),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.015) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.012) 0 1px, transparent 1px 2px);
+  background-size:
+    3px 3px,
+    100% 100%,
+    100% 100%;
+}
+
+/* ── Animations ───────────────────────────────────────────────────────────── */
+
+@keyframes shimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+
+.shimmer {
+  background-image: linear-gradient(
+    100deg,
+    rgba(255, 255, 255, 0.03) 40%,
+    rgba(255, 255, 255, 0.09) 50%,
+    rgba(255, 255, 255, 0.03) 60%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s linear infinite;
+}
+
+@keyframes typing-dot {
+  0%,
+  80%,
+  100% {
+    opacity: 0.25;
+    transform: translateY(0);
+  }
+  40% {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+}
+
+.typing-dots {
+  display: inline-flex;
+  gap: 1px;
+}
+.typing-dots span {
+  display: inline-block;
+  animation: typing-dot 1.2s ease-in-out infinite;
+}
+.typing-dots span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.typing-dots span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  animation: fade-up 0.25s ease-out both;
+}
