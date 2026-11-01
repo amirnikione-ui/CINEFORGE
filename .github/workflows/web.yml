@@ -1,0 +1,43 @@
+# CINEFORGE — web studio CI (agent-02 VEGA)
+# Web-side half of CF-060 (backend/engine tests job belongs to agent-03/05 — separate workflows).
+name: web
+
+on:
+  push:
+    branches: [main]
+    paths: ["apps/web/**", "packages/timeline/**", ".github/workflows/web.yml"]
+  pull_request:
+    paths: ["apps/web/**", "packages/timeline/**", ".github/workflows/web.yml"]
+
+jobs:
+  build:
+    name: typecheck + build (apps/web)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/web
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: apps/web/package-lock.json
+
+      - name: Install dependencies (lockfile-pinned)
+        run: npm ci
+
+      - name: Typecheck (strict)
+        run: npx tsc --noEmit
+
+      - name: Build
+        run: npm run build
+
+      - name: Upload build report
+        if: always()
+        run: |
+          echo "### Web build summary" >> "$GITHUB_STEP_SUMMARY"
+          echo "- typecheck: strict TS" >> "$GITHUB_STEP_SUMMARY"
+          echo "- build: next build (App Router)" >> "$GITHUB_STEP_SUMMARY"
