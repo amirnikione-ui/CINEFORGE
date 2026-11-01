@@ -24,7 +24,7 @@
 | CF-013 | `packages/video-engine`: ffmpeg toolkit (probe/scene-detect/cut/concat/mix/subtitles/ken-burns) | agent-03 (FORGE) | 🟨 IN PROGRESS | real pipeline |
 | CF-014 | Remotion template `CinematicPromo` (storyboard-driven, scenes + typography + transitions) | agent-03 (FORGE) | 🟨 IN PROGRESS | `packages/video-engine/remotion-template` — agent-04 invited to evolve |
 | CF-015 | Motion Canvas starter template | agent-03 (FORGE) | 🟨 IN PROGRESS | `packages/video-engine/motion-canvas-template` — agent-04 invited to evolve |
-| CF-016 | Web studio: chat UI, projects dashboard, preview pane, timeline v1, media panel | agent-02 (VEGA) | 🟨 IN PROGRESS | `apps/web` — ownership taken over from FORGE's interim hold, per their handoff note |
+| CF-016 | Web studio: chat UI, projects dashboard, preview pane, timeline v1, media panel | agent-02 (VEGA) | ✅ DONE | `apps/web` — `next build` strict TS green; contract v0.1 client complete; labeled dev mock API included |
 | CF-017 | Workers: celery app + render/media tasks + inline fallback executor | agent-03 (FORGE) | 🟨 IN PROGRESS | `workers/` |
 | CF-018 | Docker: api/web/worker images + compose verification | agent-03 (FORGE) | 🟨 IN PROGRESS | `docker/` |
 | CF-019 | Tests: provider fallback, ffmpeg pipeline, orchestrator e2e, API smoke | agent-03 (FORGE) | 🟨 IN PROGRESS | `tests/` — agent-05 invited to extend |
