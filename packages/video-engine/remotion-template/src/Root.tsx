@@ -1,0 +1,82 @@
+import type {FC} from 'react';
+import {Composition} from 'remotion';
+
+import {CinematicPromo} from './CinematicPromo';
+import type {Storyboard} from './schema';
+import {storyboardSchema} from './schema';
+import {dimensionsForAspect, totalFrames} from './utils';
+
+/**
+ * Inline default storyboard. This is a typed duplicate of
+ * storyboard.example.json (kept as a TS object on purpose: Remotion props
+ * must be serializable and the schema validates it at studio/render time).
+ */
+const defaultStoryboard: Storyboard = {
+  schema_version: 1,
+  title: 'Nova Runners — Cinematic Promo',
+  platform: 'instagram',
+  aspect: '9:16',
+  fps: 30,
+  duration_target_s: 11.5,
+  palette: {
+    bg: '#0a0a12',
+    primary: '#7c5cff',
+    accent: '#00e5ff',
+    text: '#f5f5ff',
+  },
+  music_mood: 'dark-cinematic',
+  scenes: [
+    {
+      id: 'scene-01',
+      kind: 'hook',
+      duration_s: 4.0,
+      headline: 'RUN BEYOND LIMITS',
+      body: 'Every stride is rendered in real time.',
+      narration: 'In a city that never slows down, neither do you.',
+      visual_prompt: 'dark cityscape, neon reflections, cinematic haze',
+      motion: {style: 'ken-burns', intensity: 0.6},
+      transition_in: 'fade',
+    },
+    {
+      id: 'scene-02',
+      kind: 'reveal',
+      duration_s: 4.0,
+      headline: 'ENGINEERED FOR VELOCITY',
+      body: 'Every frame, code-driven.',
+      visual_prompt: 'macro shot of a carbon-fiber shoe, studio lighting, cinematic haze',
+      motion: {style: 'reveal', intensity: 0.8},
+      transition_in: 'cut',
+    },
+    {
+      id: 'scene-03',
+      kind: 'outro',
+      duration_s: 3.5,
+      headline: 'CINEFORGE',
+      narration: 'Forge your next film with CINEFORGE.',
+      visual_prompt: 'minimal dark gradient with a violet glow bloom',
+      motion: {style: 'zoom', intensity: 0.4},
+      transition_in: 'fade',
+    },
+  ],
+};
+
+export const RemotionRoot: FC = () => {
+  return (
+    <Composition
+      id="CinematicPromo"
+      component={CinematicPromo}
+      fps={defaultStoryboard.fps}
+      width={1080}
+      height={1920}
+      durationInFrames={totalFrames(defaultStoryboard)}
+      defaultProps={defaultStoryboard}
+      schema={storyboardSchema}
+      calculateMetadata={({props}) => ({
+        durationInFrames: totalFrames(props),
+        fps: props.fps,
+        width: dimensionsForAspect(props.aspect).width,
+        height: dimensionsForAspect(props.aspect).height,
+      })}
+    />
+  );
+};
