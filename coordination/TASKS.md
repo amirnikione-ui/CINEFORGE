@@ -18,17 +18,18 @@
 
 | ID | Task | Owner | Status | Notes |
 |---|---|---|---|---|
-| CF-010 | Backend FastAPI skeleton: projects/messages/assets/jobs models + REST per contracts | agent-03 (FORGE) | 🟨 IN PROGRESS | `backend/` — agent-05 offering merged (PR #27) as adoptable base |
-| CF-011 | Director orchestrator: tool registry, plan→execute loop, mock-mode deterministic director | agent-03 (FORGE) | 🟨 IN PROGRESS | `backend/app/director` (agent-05 offering) — LLM planner swap point documented |
-| CF-012 | `packages/ai-providers`: base interfaces, registry, fallback chains, openai/anthropic/zai/mock impls | agent-03 (FORGE) | 🟨 IN PROGRESS | offline-safe — v0.1 in `backend/app/providers` (agent-05 offering); extraction to package pending |
-| CF-013 | `packages/video-engine`: ffmpeg toolkit (probe/scene-detect/cut/concat/mix/subtitles/ken-burns) | agent-03 (FORGE) | 🟨 IN PROGRESS | real pipeline |
-| CF-014 | Remotion template `CinematicPromo` (storyboard-driven, scenes + typography + transitions) | agent-03 (FORGE) | 🟨 IN PROGRESS | `packages/video-engine/remotion-template` — agent-04 invited to evolve |
-| CF-015 | Motion Canvas starter template | agent-03 (FORGE) | 🟨 IN PROGRESS | `packages/video-engine/motion-canvas-template` — agent-04 invited to evolve |
+| CF-010 | Backend FastAPI skeleton: projects/messages/assets/jobs models + REST per contracts | agent-05 (RELAY) + agent-03 (FORGE, review/hardening) | ✅ DONE | canonical service merged (PR #27, adopted per ADR-0010); FORGE config guard + suite green (31 tests) |
+| CF-011 | Director orchestrator: tool registry, plan→execute loop, mock-mode deterministic director | agent-05 (RELAY) + agent-03 (FORGE, intelligence layer) | ✅ DONE | deterministic director live end-to-end; LLM tool-calling upgrade via CF-021 (ai-providers wiring) |
+| CF-012 | `packages/ai-providers`: base interfaces, registry, fallback chains, openai/anthropic/zai/mock impls | agent-03 (FORGE) | ✅ DONE | full package shipped (PR #28): chains, anthropic/elevenlabs, honest mock tier; wiring task CF-021 |
+| CF-013 | `packages/video-engine`: ffmpeg toolkit (probe/scene-detect/cut/concat/mix/subtitles/ken-burns) | agent-05 (RELAY) + agent-03 (FORGE, render verification) | ✅ DONE | plan-compiler engine merged (PR #27); real MP4 renders verified by FORGE e2e |
+| CF-014 | Remotion template `CinematicPromo` (storyboard-driven, scenes + typography + transitions) | agent-03 (FORGE) | ✅ DONE | `remotion-template/` shipped (PR #37) — agent-04 invited to evolve |
+| CF-015 | Motion Canvas starter template | agent-03 (FORGE) | ✅ DONE | `motion-canvas-template/` shipped (PR #37) — agent-04 invited to evolve |
 | CF-016 | Web studio: chat UI, projects dashboard, preview pane, timeline v1, media panel | agent-02 (VEGA) | ✅ DONE | `apps/web` — `next build` strict TS green; contract v0.1 client complete; labeled dev mock API included |
-| CF-017 | Workers: celery app + render/media tasks + inline fallback executor | agent-03 (FORGE) | 🟨 IN PROGRESS | `workers/` |
-| CF-018 | Docker: api/web/worker images + compose verification | agent-03 (FORGE) | 🟨 IN PROGRESS | `docker/` |
-| CF-019 | Tests: provider fallback, ffmpeg pipeline, orchestrator e2e, API smoke | agent-03 (FORGE) | 🟨 IN PROGRESS | `tests/` — agent-05 invited to extend |
-| CF-020 | E2E demo script: brief → mp4 without keys | agent-03 (FORGE) | 🟨 IN PROGRESS | `scripts/smoke_test.sh` (RELAY, contract paths) + live e2e verified in backend tests |
+| CF-017 | Workers: celery app + render/media tasks + inline fallback executor | agent-03 (FORGE) | ✅ DONE | Celery tier wired to canonical executor with single-flight CAS (PR #28); inline tier native to backend |
+| CF-018 | Docker: api/web/worker images + compose verification | agent-03 (FORGE) | ✅ DONE | both images real (PR #28); compose STORAGE_ROOT env fixed; owner can verify with `docker compose build` |
+| CF-019 | Tests: provider fallback, ffmpeg pipeline, orchestrator e2e, API smoke | agent-05 (RELAY) + agent-03 (FORGE) | ✅ DONE | 31 tests green monorepo-wide offline (provider chains + engine + API e2e + repo sanity) |
+| CF-020 | E2E demo script: brief → mp4 without keys | agent-03 (FORGE) | ✅ DONE | `scripts/demo_e2e.py` (server + in-process modes) — live-verified 12s 1080×1920 mp4 |
+| CF-021 | Wire `packages/ai-providers` into backend provider module (swap point per PR #27 handoff) | ⬜ open | ⬜ OPEN | enables anthropic + per-capability chains + TTS/music upgrades (CF-032/033) |
 
 ## Milestone M2 — Real provider bring-up (sessions 3–5)
 
