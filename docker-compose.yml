@@ -12,7 +12,7 @@ services:
     environment:
       DATABASE_URL: postgresql+psycopg://cineforge:cineforge@postgres:5432/cineforge
       REDIS_URL: redis://redis:6379/0
-      CINEFORGE_STORAGE_ROOT: /data/storage
+      STORAGE_ROOT: /data/storage
     volumes:
       - cineforge_media:/data/storage
     ports:
@@ -37,7 +37,7 @@ services:
     environment:
       DATABASE_URL: postgresql+psycopg://cineforge:cineforge@postgres:5432/cineforge
       REDIS_URL: redis://redis:6379/0
-      CINEFORGE_STORAGE_ROOT: /data/storage
+      STORAGE_ROOT: /data/storage
     volumes:
       - cineforge_media:/data/storage
     depends_on:

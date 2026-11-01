@@ -2,9 +2,12 @@
 
 from __future__ import annotations
 
+import logging
 from functools import lru_cache
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+logger = logging.getLogger("cineforge.config")
 
 
 class Settings(BaseSettings):
@@ -24,6 +27,14 @@ class Settings(BaseSettings):
     llm_model: str = "glm-4-flash"
 
     font_file: str = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
+
+    def model_post_init(self, __context) -> None:  # noqa: ANN001
+        # Some sandboxes export an unrelated DATABASE_URL (e.g. file:...).
+        # Never let that break the zero-config dev experience (FORGE, CF-010).
+        url = (self.database_url or "").strip()
+        if not url.startswith(("sqlite", "postgresql", "postgres", "mysql")):
+            logger.warning("DATABASE_URL=%r is not a SQLAlchemy URL; falling back to SQLite", url[:60])
+            self.database_url = "sqlite:///./cineforge.db"
 
     @property
     def cors_origin_list(self) -> list[str]:

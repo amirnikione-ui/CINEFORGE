@@ -34,28 +34,21 @@ def _client(base_url: str | None):
         import httpx
 
         return httpx.Client(base_url=base_url, timeout=300.0), False
-    # in-process: isolated storage + sqlite db in a temp dir (no module reloads)
+    # in-process: isolated storage + sqlite db in a temp dir (canonical layout)
     tmp = Path(tempfile.mkdtemp(prefix="cineforge-demo-"))
-    import sqlalchemy as sa
 
-    import app.config as cfg
+    from app.core.config import get_settings
 
-    cfg.settings.storage_root = tmp / "storage"
-    cfg.settings.database_url = f"sqlite:///{tmp / 'demo.db'}"
+    settings = get_settings()  # cached singleton — mutate in place, no reloads
+    settings.storage_root = str(tmp / "storage")
+    settings.database_url = f"sqlite:///{tmp / 'demo.db'}"
 
-    import app.db as dbmod
+    import app.core.db as dbmod  # engine binds to the mutated settings
 
     dbmod.engine.dispose()
-    dbmod.engine = sa.create_engine(
-        f"sqlite:///{tmp / 'demo.db'}", connect_args={"check_same_thread": False}
-    )
-    dbmod.SessionLocal = sa.orm.sessionmaker(bind=dbmod.engine, expire_on_commit=False)
-
-    from app.models import Base
-
-    Base.metadata.create_all(dbmod.engine)
-
-    import app.providers  # noqa: F401  (default registry)
+    dbmod.engine = dbmod._make_engine()
+    dbmod.SessionLocal = dbmod.sessionmaker(bind=dbmod.engine, autoflush=False, expire_on_commit=False)
+    dbmod.init_db()
 
     from fastapi.testclient import TestClient
 
@@ -93,10 +86,15 @@ def main() -> int:
     print(f"✓ project created: {project['id']}")
 
     chat = client.post(f"/api/projects/{project['id']}/chat", json={"message": args.brief}).json()
-    plan = chat["assistant_message"]["meta"].get("plan", {})
-    print(f"✓ director replied (brain: {chat['assistant_message']['meta'].get('llm_provider')})")
-    for scene in plan.get("scenes", []):
-        print(f"   • [{scene['kind']}] {scene['headline']} — {scene['duration_s']}s")
+    meta = chat["assistant_message"]["meta"]
+    plan = meta.get("plan", {})
+    print(f"✓ director replied (brain: {meta.get('llm_provider')})")
+    if isinstance(plan, dict) and plan.get("scenes"):
+        for scene in plan["scenes"]:
+            print(f"   • [{scene['kind']}] {scene['headline']} — {scene['duration_s']}s")
+    else:  # tool-step plan shape
+        for step in plan if isinstance(plan, list) else []:
+            print(f"   • {step.get('tool')} — {step.get('note', '')}")
     print(f"✓ assets: {len(chat['assets'])}, jobs: {len(chat['jobs'])}")
 
     if not chat["jobs"]:
@@ -119,13 +117,15 @@ def main() -> int:
         print(f"\n✗ render failed: {job.get('error')}")
         return 1
 
-    video_asset_id = job["result"]["video_asset_id"]
+    video_asset_id = job["result"].get("video_asset_id") or job["result"].get("asset_id")
     detail = client.get(f"/api/projects/{project['id']}").json()
     video_asset = next(a for a in detail["assets"] if a["id"] == video_asset_id)
-    render_meta = job["result"].get("render", {})
+    meta = video_asset.get("meta", {})
     print("✓ rendered:")
     for k in ("duration_s", "width", "height", "fps", "has_audio", "size_bytes"):
-        print(f"   {k}: {render_meta.get(k)}")
+        if k in meta:
+            print(f"   {k}: {meta[k]}")
+    print(f"   job result: {json.dumps(job['result'])[:160]}")
     storage_path = Path(detail.get("project", {}).get("id", ""))  # only for display
     print(f"   asset: {video_asset['kind']}/{video_asset['filename']} (id {video_asset_id})")
     print(f"   file:  {video_asset['path']}")

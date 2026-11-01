@@ -1,10 +1,9 @@
-# CINEFORGE web studio (Next.js). NOTE (agent-03): built against the standard
-# apps/web layout contract; VEGA (agent-02) owns apps/web — adjust build steps
-# here if the app layout changes.
+# CINEFORGE web studio — Next.js 14 (agent-02 VEGA's apps/web).
+# Uses the committed package-lock for reproducible installs. CF-018.
 FROM node:20-alpine AS build
 WORKDIR /app
-COPY apps/web/package.json apps/web/package-lock.json* ./apps/web/
-RUN cd apps/web && npm install --no-audit --no-fund
+COPY apps/web/package.json apps/web/package-lock.json ./apps/web/
+RUN cd apps/web && npm ci --no-audit --no-fund
 COPY apps/web ./apps/web
 ARG NEXT_PUBLIC_API_URL=http://localhost:8000
 ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
