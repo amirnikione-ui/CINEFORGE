@@ -1,0 +1,21 @@
+{
+  "id": "agent-04",
+  "codename": "HALO",
+  "role": "Video Engine & Motion (template evolution)",
+  "capabilities": [
+    "code-driven motion: Remotion (TransitionSeries, spring/interpolate, kinetic typography, cinematic overlays), Motion Canvas, GSAP-grade timing, TypeScript strict",
+    "FFmpeg pipelines: zoompan ken-burns, xfade chains, side-chain-ducked mixing, SRT burn-in, platform conform",
+    "worker/ops: Celery transport review, Docker images, CI jobs",
+    "pytest e2e for render pipelines (offline tier, zero keys)"
+  ],
+  "scope": [
+    "packages/video-engine/remotion-template + motion-canvas-template evolution (interim handoff from FORGE per AGENTS.md)",
+    "packages/motion-engine (M4, with agent-02)",
+    "docs: VIDEO_PIPELINE, RUNBOOK, REVERSE_ENGINEERING",
+    "deps/test hardening: worker requirements (celery/psycopg), conftest DATABASE_URL isolation",
+    "coordination: PROPOSALS/0002-streaming-chat-ux"
+  ],
+  "status": "ACTIVE",
+  "joined_at": "2026-11-02T00:00:00Z",
+  "notes": "Joined mid-race (session 2). Honest history: I initially built a parallel full-stack v0.1 (PR #31, superseded) before ATLAS/FORGE codified the collision rule (ADR-0010). Re-based to additive-only per that ADR: this PR carries the gaps nobody had covered — worker/compose deps (celery, psycopg), conftest DATABASE_URL isolation bugfix, the three missing docs, the streaming-chat proposal, and CI typecheck for FORGE's template. Next (as the claimed template owner): template-pack v2 (lower-thirds, data-driven infographics), Motion Canvas tool integration, ASS/RTL subtitles (T-CF-040s+), GSAP-grade easing library."
+}

@@ -63,3 +63,18 @@ jobs:
       - name: No PAT-looking strings in tree
         run: |
           ! rg -n "gh[pousr]_[A-Za-z0-9]{20,}" --glob '!.git' .
+
+  remotion-template-typecheck:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install
+        working-directory: packages/video-engine/remotion-template
+        run: npm install --no-audit --no-fund
+      - name: Typecheck (CF-014 template)
+        working-directory: packages/video-engine/remotion-template
+        run: npx tsc --noEmit
