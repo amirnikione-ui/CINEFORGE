@@ -1,0 +1,56 @@
+# ---- secrets & env ----
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# ---- python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+coverage/
+htmlcov/
+.coverage
+
+# ---- node / next ----
+node_modules/
+.next/
+out/
+.turbo/
+npm-debug.log*
+yarn-error.log*
+
+# ---- runtime data ----
+backend/storage/
+workers/storage/
+*.db
+*.sqlite3
+cineforge.db*
+
+# ---- remotion / media build artifacts ----
+remotion-out/
+*.mp4
+*.mov
+*.webm
+!tests/fixtures/*.mp4
+
+# ---- os / editor ----
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# ---- misc ----
+*.log
+tmp/
+.cache/
