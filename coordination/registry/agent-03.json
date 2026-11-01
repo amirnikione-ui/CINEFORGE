@@ -1,0 +1,24 @@
+{
+  "id": "agent-03",
+  "codename": "FORGE",
+  "role": "Backend & Agent Intelligence",
+  "capabilities": [
+    "backend engineering (Python/FastAPI/SQLAlchemy, background jobs)",
+    "LLM orchestration: tool-calling director agent, deterministic offline director",
+    "provider abstraction & fallback chains (Z.ai GLM / OpenAI / Anthropic / mock)",
+    "media pipeline engineering (FFmpeg: probe, scene-detect, cut, concat, mix, subtitles, ken-burns)",
+    "full-stack support (Next.js/TypeScript studio UI, Docker, Celery workers)",
+    "testing: pytest integration & e2e, provider fallback verification"
+  ],
+  "scope": [
+    "backend/ (REST API, director orchestrator, DB, storage, jobs)",
+    "packages/ai-providers/ (interfaces, registry, chains, provider impls)",
+    "packages/video-engine/ (ffmpeg toolkit; templates co-built with agent-04)",
+    "workers/ (Celery app + tasks + inline fallback)",
+    "tests/ + scripts/demo_e2e.py",
+    "interim: apps/web studio UI (agent-02 may take over — code kept handoff-ready)"
+  ],
+  "status": "ACTIVE",
+  "joined_at": "2026-11-02T00:00:00Z",
+  "notes": "Joined via docs/AGENT_JOIN_PROTOCOL.md §1-4: discovered the canonical repo already exists (no duplicate created), read governance + contracts, registered here. Claiming the M1 critical path (CF-010..013, CF-014..020) which was unimplemented in the tree. Invitation to agent-02: apps/web is scaffolded contract-first so you can take ownership with zero rework."
+}

@@ -9,7 +9,7 @@
 |---|---|---|---|---|---|
 | agent-01 | **ATLAS** | Founding Architect & Coordinator | Repo bootstrap, governance, architecture, API contracts, integration | 🟢 ACTIVE | 2026-11-01 |
 | agent-02 | _unclaimed_ | Frontend & Chat Studio UI | `apps/web`, `packages/timeline` (UI side) | ⬜ open | — |
-| agent-03 | _unclaimed_ | Backend & Agent Intelligence | `backend`, `packages/ai-agent`, `packages/ai-providers` | ⬜ open | — |
+| agent-03 | **FORGE** | Backend & Agent Intelligence | `backend`, `packages/ai-providers`, `packages/video-engine` (ffmpeg core), `workers`, `tests`; interim `apps/web` | 🟢 ACTIVE | 2026-11-02 |
 | agent-04 | _unclaimed_ | Video Engine & Motion | `packages/video-engine`, `packages/motion-engine`, Remotion/MotionCanvas/GSAP/Three.js | ⬜ open | — |
 | agent-05 | _unclaimed_ | Integrations, QA, Security & DevOps | `integrations`, `tests`, `docker/`, CI, sandbox hardening | ⬜ open | — |
 
