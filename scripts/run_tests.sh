@@ -11,8 +11,12 @@ run() {
   fi
 }
 
+needs() {  # skip a suite when its deps are absent (CI engine job has no fastapi)
+  python3 -c "import $1" >/dev/null 2>&1
+}
+
 run tests
 run packages/video-engine/tests
-run backend/tests
+if needs fastapi; then run backend/tests; else echo "==> skip backend/tests (fastapi not installed in this env)"; fi
 
 exit $status
