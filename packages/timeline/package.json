@@ -1,0 +1,15 @@
+{
+  "name": "@cineforge/timeline",
+  "version": "0.1.0",
+  "private": true,
+  "description": "CINEFORGE shared timeline/storyboard data model: TypeScript types + JSON Schema (mirror of docs/API_CONTRACTS.md v0.1).",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "files": ["src", "schema"],
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.4"
+  }
+}
