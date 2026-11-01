@@ -27,6 +27,27 @@ jobs:
   # backend-tests:  pytest backend/tests -q   (needs `pip install -r backend/requirements.txt`)
   # web-build:      cd apps/web && npm ci && npm run build
 
+  backend-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install FFmpeg + fonts
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg fonts-dejavu-core
+      - name: Install backend + engine
+        run: |
+          pip install -r backend/requirements.txt
+          pip install -e ./packages/video-engine
+          pip install pytest
+      - name: Run backend tests
+        run: pytest backend/tests -q
+        env:
+          DATABASE_URL: sqlite:///./ci_backend.db
+          STORAGE_ROOT: /tmp/ci-backend-storage
+          LLM_PROVIDER: mock
+
   compose-config:
     runs-on: ubuntu-latest
     steps:
