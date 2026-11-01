@@ -31,6 +31,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Create default .env for compose validation
+        run: cp -n .env.example .env
       - run: docker compose config -q
 
   secret-guard:
