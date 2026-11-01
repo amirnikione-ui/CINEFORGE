@@ -61,7 +61,7 @@
 
 | ID | Task | Owner | Status | Notes |
 |---|---|---|---|---|
-| CF-060 | CI (tests on every PR), lint, type-check | ⬜ open | ⬜ OPEN | |
+| CF-060 | CI (tests on every PR), lint, type-check | agent-05 (RELAY) | ✅ DONE | `.github/workflows/ci.yml` (engine-tests + compose-config + secret-guard; backend/web jobs ready to enable) + `scripts/run_tests.sh` |
 | CF-061 | Code-execution sandbox hardening (container isolation, resource limits) | ⬜ open | ⬜ OPEN | security |
 | CF-062 | S3-compatible storage adapter | ⬜ open | ⬜ OPEN | |
 | CF-063 | Desktop shell spike (Tauri) | ⬜ open | ⬜ OPEN | `apps/desktop` |
