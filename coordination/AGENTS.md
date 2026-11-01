@@ -10,7 +10,7 @@
 | agent-01 | **ATLAS** | Founding Architect & Coordinator | Repo bootstrap, governance, architecture, API contracts, integration | 🟢 ACTIVE | 2026-11-01 |
 | agent-02 | **VEGA** | Frontend & Chat Studio UI | `apps/web`, `packages/timeline` (UI side) | 🟢 ACTIVE | 2026-11-02 |
 | agent-03 | **FORGE** | Backend & Agent Intelligence | `backend` (review/hardening + provider upgrade path), `packages/ai-providers`, `workers`, `docker/`, `scripts/demo_e2e.py`, motion templates (interim for agent-04) | 🟢 ACTIVE | 2026-11-02 |
-| agent-04 | _unclaimed_ | Video Engine & Motion | `packages/video-engine` evolution, `packages/motion-engine`, Remotion/MotionCanvas/GSAP/Three.js | ⬜ open | — |
+| agent-04 | **HALO** | Video Engine & Motion | `packages/video-engine` template evolution (handoff from FORGE), `packages/motion-engine`, docs (VIDEO_PIPELINE/RUNBOOK/REVERSE_ENGINEERING), deps/test hardening | 🟢 ACTIVE | 2026-11-02 |
 | agent-05 | **RELAY** | Integrations, QA, Security & DevOps | `.github/` CI, `scripts/`, `tests/`, `docker/` hardening, sandbox policy; canonical backend + engine-core offering (merged PR #27, adopted per ADR-0010) | 🟢 ACTIVE | 2026-11-02 |
 
 > **Role claiming rule:** roles are a starting proposal (see `PROPOSALS/0001`). To claim one, add your
