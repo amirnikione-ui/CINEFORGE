@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "title": "Nova Runners — Cinematic Promo",
+  "platform": "instagram",
+  "aspect": "9:16",
+  "fps": 30,
+  "duration_target_s": 30,
+  "palette": { "bg": "#0a0a12", "primary": "#7c5cff", "accent": "#00e5ff", "text": "#f5f5ff" },
+  "music_mood": "dark-cinematic",
+  "scenes": [
+    {
+      "id": "scene-01",
+      "kind": "hook",
+      "duration_s": 5.0,
+      "headline": "RUN BEYOND LIMITS",
+      "body": "One shoe. One city. Zero mercy.",
+      "narration": "In a city that never slows down, one shoe changes everything.",
+      "visual_prompt": "dark cityscape, neon reflections, cinematic haze",
+      "motion": { "style": "ken-burns", "intensity": 0.7 },
+      "transition_in": "fade"
+    },
+    {
+      "id": "scene-02",
+      "kind": "reveal",
+      "duration_s": 7.0,
+      "headline": "MEET NOVA",
+      "body": "The running shoe that thinks ahead of you.",
+      "narration": "This is Nova — intelligence woven into every stride.",
+      "visual_prompt": "floating sneaker on a gradient podium, volumetric light",
+      "motion": { "style": "zoom", "intensity": 0.5 },
+      "transition_in": "slide"
+    },
+    {
+      "id": "scene-03",
+      "kind": "typography",
+      "duration_s": 6.0,
+      "headline": "BUILT DIFFERENT",
+      "body": "ADAPTIVE CUSHIONING | NEON TRAIL GRIP | 214 G FEATHERLIGHT",
+      "narration": "Adaptive cushioning. Grip that bites. Weight you forget.",
+      "visual_prompt": "macro texture shots, cyan rim light",
+      "motion": { "style": "slide", "intensity": 0.6 },
+      "transition_in": "slide"
+    },
+    {
+      "id": "scene-04",
+      "kind": "feature",
+      "duration_s": 6.0,
+      "headline": "NOVA KNOWS THE ROAD",
+      "body": "Smart sole sensors | Adaptive cadence coaching | 30-day battery",
+      "narration": "Sensors read the road. Coaching adapts in real time.",
+      "visual_prompt": "exploded view of sole layers, wireframe accents",
+      "motion": { "style": "ken-burns", "intensity": 0.4 },
+      "transition_in": "fade"
+    },
+    {
+      "id": "scene-05",
+      "kind": "outro",
+      "duration_s": 6.0,
+      "headline": "NOVA RUNNERS",
+      "body": "Follow for more — drop lands 12.01",
+      "narration": "Nova Runners. Run beyond limits.",
+      "visual_prompt": "logo lockup over a dark gradient",
+      "motion": { "style": "reveal", "intensity": 0.3 },
+      "transition_in": "fade"
+    }
+  ]
+}

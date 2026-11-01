@@ -4,7 +4,10 @@ from __future__ import annotations
 
 from functools import lru_cache
 
+from pydantic import field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+_KNOWN_DB_SCHEMES = ("sqlite", "postgresql", "postgres", "mysql")
 
 
 class Settings(BaseSettings):
@@ -24,6 +27,15 @@ class Settings(BaseSettings):
     llm_model: str = "glm-4-flash"
 
     font_file: str = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
+
+    @field_validator("database_url", mode="after")
+    @classmethod
+    def _guard_foreign_database_url(cls, value: str) -> str:
+        """Hosts may export an unrelated DATABASE_URL (CI sandboxes, IDEs) —
+        fall back to the local default unless the scheme is one we support."""
+        if value and value.split(":", 1)[0].lower() in _KNOWN_DB_SCHEMES:
+            return value
+        return "sqlite:///./cineforge.db"
 
     @property
     def cors_origin_list(self) -> list[str]:
