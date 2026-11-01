@@ -24,6 +24,7 @@ htmlcov/
 # ---- node / next ----
 node_modules/
 .next/
+*.tsbuildinfo
 out/
 .turbo/
 npm-debug.log*
